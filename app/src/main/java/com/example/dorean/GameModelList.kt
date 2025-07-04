@@ -20,8 +20,8 @@ object GameModelList {
         val count = store.getAsJsonObject("paging").get("total").asInt
         val gameElements = store.getAsJsonArray("elements")
 
-        Log.d("DATA", "count $count")
-        Log.d("DATA", gameElements.toString())
+        Log.d("DATA_COUNT", "count $count")
+        Log.d("TEST", gameElements.toString())
 
         val game = gameElements[0].asJsonObject
         Log.d("DATA", game.get("title").asString)
