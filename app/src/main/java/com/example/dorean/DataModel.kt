@@ -7,7 +7,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-fun getGameData() {
+fun requestData() {
     val request = APIClient.apiService.getResponse()
     request.enqueue(object : Callback<JsonObject> {
         override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
