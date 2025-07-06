@@ -3,6 +3,7 @@ package com.example.dorean
 import android.util.Log
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -22,9 +23,6 @@ object GameModelList {
 
         Log.d("DATA_COUNT", "count $count")
         Log.d("TEST", gameElements.toString())
-
-        val game = gameElements[0].asJsonObject
-        Log.d("DATA", game.get("title").asString)
         setGameModelList(gameElements,count)
     }
 
@@ -68,13 +66,13 @@ object GameModelList {
 
                 return discount == 0
             }
-        }
+        }   
         return false
     }
 
     private fun isoToStringDate(isoDate: String): String {
 
-        val dateTime = ZonedDateTime.parse(isoDate)
+        val dateTime = ZonedDateTime.parse(isoDate).withZoneSameInstant(ZoneId.systemDefault())
         val formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy, hh:mm a", Locale.getDefault())
         val localizedDate = dateTime.format(formatter)
         return localizedDate
