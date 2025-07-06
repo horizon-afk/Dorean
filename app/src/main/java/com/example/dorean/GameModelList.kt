@@ -10,7 +10,7 @@ import java.util.Locale
 
 object GameModelList {
 
-    private val games = mutableListOf<GameModel>()
+    val games = mutableListOf<GameModel>()
 
     fun getGameData(json: JsonObject) {
         val store = json.getAsJsonObject("data")
