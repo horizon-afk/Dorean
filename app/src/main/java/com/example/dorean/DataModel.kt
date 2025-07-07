@@ -10,9 +10,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-fun requestData(onResult: (List<GameModel>) -> Unit) {
+fun requestData(onResult: (List<GameModel>, Boolean) -> Unit) {
     var games by mutableStateOf<List<GameModel>>(emptyList())
     var isLoading by mutableStateOf(true)
+
+    //checking for cached data
+
+
 
     val request = APIClient.apiService.getResponse()
     request.enqueue(object : Callback<JsonObject> {
@@ -26,14 +30,14 @@ fun requestData(onResult: (List<GameModel>) -> Unit) {
                 games = emptyList()
             }
             isLoading = false
-            onResult(games)
+            onResult(games,isLoading)
         }
 
         override fun onFailure(call: Call<JsonObject>, t: Throwable) {
             // on connection error
             games = emptyList()
             isLoading = false
-            onResult(games)
+            onResult(games,isLoading)
         }
     })
 }
