@@ -14,9 +14,6 @@ fun requestData(onResult: (List<GameModel>, Boolean) -> Unit) {
     var games by mutableStateOf<List<GameModel>>(emptyList())
     var isLoading by mutableStateOf(true)
 
-    //checking for cached data
-
-
 
     val request = APIClient.apiService.getResponse()
     request.enqueue(object : Callback<JsonObject> {
