@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 
 
 object GameCard {
@@ -42,7 +43,7 @@ object GameCard {
                     Log.d("CACHED","fetching data online")
                     loading = isLoading
                     if (!isLoading) cache.save(result)
-            }
+                }
             }
         }
 
@@ -66,6 +67,10 @@ object GameCard {
     private fun GameCard(game: GameModel) {
         Card(modifier = Modifier.padding(10.dp)) {
             Text(game.name, fontSize = 25.sp)
+            AsyncImage(
+                model = game.imageUrl,
+                contentDescription = null,
+            )
             Text(game.description)
             Text("Get before: ${game.endDate}")
         }

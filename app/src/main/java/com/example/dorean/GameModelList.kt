@@ -41,14 +41,15 @@ object GameModelList {
                     .getAsJsonArray("promotionalOffers")[0].asJsonObject
                     .getAsJsonArray("promotionalOffers")[0].asJsonObject.get("endDate").asString
 
+                val image_url = game.getAsJsonArray("keyImages")[0].asJsonObject.get("url").asString
 
                 val gameModel = GameModel(
                     name = game.get("title").asString,
+                    imageUrl = image_url,
                     description = game.get("description").asString,
                     endDate = isoToStringDate(endDate)
                 )
                 games.add(gameModel)
-
             }
         }
     }
