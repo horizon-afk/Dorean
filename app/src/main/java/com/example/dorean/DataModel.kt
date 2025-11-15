@@ -14,7 +14,6 @@ fun requestData(onResult: (List<GameModel>, Boolean) -> Unit) {
     var games by mutableStateOf<List<GameModel>>(emptyList())
     var isLoading by mutableStateOf(true)
 
-
     val request = APIClient.apiService.getResponse()
     request.enqueue(object : Callback<JsonObject> {
         override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
