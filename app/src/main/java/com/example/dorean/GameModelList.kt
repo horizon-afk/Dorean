@@ -14,6 +14,8 @@ object GameModelList {
     val games = mutableListOf<GameModel>()
 
     fun getGameData(json: JsonObject) {
+        //clears the list of games for refresh
+        games.clear()
         val store = json.getAsJsonObject("data")
             .getAsJsonObject("Catalog")
             .getAsJsonObject("searchStore")
